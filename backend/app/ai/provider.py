@@ -66,14 +66,17 @@ class FoundryProvider(BaseProvider):
         self.endpoint = endpoint
         self.model = model
         self.credential_source = credential_source
+        self.credential = credential
         self._project = AIProjectClient(endpoint=endpoint, credential=credential)
         self._client = self._project.get_openai_client()
 
     def _call(self, system: str, user: str) -> str:
-        resp = self._client.responses.create(
-            model=self.model,
-            input=[{"role": "system", "content": system}, {"role": "user", "content": user}],
-        )
+        # System prompt goes in `instructions`, the evidence pack as plain `input` text: the Foundry
+        # Responses endpoint rejects role-only message items without an explicit item type.
+        kwargs: dict[str, Any] = {"model": self.model, "instructions": system, "input": user}
+        if self.model.lower().startswith(("gpt-5", "o1", "o3", "o4")):
+            kwargs["reasoning"] = {"effort": "low"}  # reasoning models: keep latency demo-friendly
+        resp = self._client.responses.create(**kwargs)
         text = getattr(resp, "output_text", None) or ""
         if not text.strip():
             raise AIUnavailable("Foundry returned an empty response")

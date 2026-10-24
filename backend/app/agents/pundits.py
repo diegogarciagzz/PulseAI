@@ -189,7 +189,7 @@ async def _foundry_round(prov: FoundryProvider, cands: list[CandidateScore], tab
     from agent_framework.foundry import FoundryChatClient
 
     ids = ", ".join(c.player_id for c in cands)
-    client = FoundryChatClient(project_endpoint=prov.endpoint, model=prov.model, credential=prov._project._config.credential if hasattr(prov._project, "_config") else None)  # type: ignore[attr-defined]
+    client = FoundryChatClient(project_endpoint=prov.endpoint, model=prov.model, credential=prov.credential)
 
     async def run_one(pid: str) -> tuple[str, dict[str, Any]]:
         persona = PERSONAS[pid]

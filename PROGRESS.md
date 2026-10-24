@@ -12,12 +12,12 @@ Resume instructions: read this file, then `README.md` and `docs/architecture.md`
 - [x] Phase 5: recap (fan/analyst, en/es), docs, README, demo script, .env.example, tests (backend 54, eval 69/69, vitest 5, Playwright 5, tsc, vite build)
 
 ## Not done / honest gaps
-- Live Foundry inference and the Agent Framework debate path have not been executed (no Azure credentials in the dev environment). Code uses current SDKs and degrades to demo mode with a visible label. First thing to do with credentials: `cp .env.example .env`, fill endpoint + model, `az login`, restart backend, check `/api/system/capabilities`, run the Studio debate, then `python -m app.evaluation.run_eval --foundry`.
+- [x] Live Foundry verified (Oct 24): project `pulseai-diego`, deployment `gpt-5-mini`. Fixes: Responses API call now uses `instructions` + text `input` (role-only items were rejected with 400), reasoning effort low for gpt-5 models, FoundryChatClient receives the provider credential directly. Smoke test: `python scripts/foundry_smoke.py` -> LIVE FOUNDRY OK.
 - Broadcast overlay components from the kit are available (`src/pulse/broadcast`) but not surfaced in the UI.
 - Optional audio synthesis for the debate: not started.
 - Repository is not yet a git repo and not public (user action: `git init`, review, publish).
 
 ## Next priorities
-1. Run with real Foundry credentials; fix any API drift in `ai/provider.py` and `agents/pundits.py::_foundry_round` (FoundryChatClient credential plumbing).
+1. Deploy a public test build (Azure Container Apps) for the judges; keep it available until Nov 10.
 2. Record the demo video following `docs/demo-script.md`.
 3. Optional: broadcast overlay preview tab using `BroadcastStage` + `GoalAnnouncement` + `VarBanner`.

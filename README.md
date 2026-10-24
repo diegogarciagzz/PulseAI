@@ -67,7 +67,7 @@ az login          # or AZURE_CLIENT_ID / AZURE_TENANT_ID / AZURE_CLIENT_SECRET
 
 Restart the backend. `GET /api/system/capabilities` and the header badge report `Foundry live` once a credential resolves. `PULSE_AI_MODE=demo` forces demo; `PULSE_AI_MODE=foundry` refuses to start in demo.
 
-Honest status: this repository was developed without Azure credentials available in the build environment. The Foundry and Agent Framework code paths use the current SDK APIs (azure-ai-projects 2.9, agent-framework 1.19) and are exercised for configuration, fallback and JSON parsing in tests, but live inference has not been run here. Demo mode is complete and tested.
+Live status (verified October 24, 2026): running against a real Microsoft Foundry project with a `gpt-5-mini` deployment, insight explanations come back with `source=foundry` and the AI Studio debate runs as three Microsoft Agent Framework agents (`source=agent-framework`, 2 rounds, about 30 s), with every argument checked by Narrative VAR. `python scripts/foundry_smoke.py` reproduces this check against a running backend; `python scripts/foundry_diag.py` prints the project's deployments and the raw response of a minimal call when something is misconfigured. Demo mode remains the default without credentials.
 
 ## Tests
 
