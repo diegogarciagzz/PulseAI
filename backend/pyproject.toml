@@ -1,0 +1,25 @@
+[project]
+name = "pulse-ai-backend"
+version = "0.1.0"
+description = "PULSE AI backend: synthetic match engine, Match Pulse, Narrative VAR, Foundry agents"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  "pydantic>=2.7",
+  "pydantic-settings>=2.3",
+  "python-dotenv>=1.0",
+  "httpx>=0.27",
+  "azure-identity>=1.17",
+  "azure-ai-projects>=2.3.0",
+  "openai>=1.50",
+]
+
+[project.optional-dependencies]
+agents = ["agent-framework>=1.0", "agent-framework-foundry>=1.0"]
+eval = ["azure-ai-evaluation>=1.13"]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

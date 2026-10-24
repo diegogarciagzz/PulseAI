@@ -1,0 +1,1911 @@
+{
+  "generated_at": "2026-10-24T13:52:53.174721+00:00",
+  "python": "3.14.8",
+  "evaluators_ran": [
+    "deterministic-labelled-fixtures"
+  ],
+  "ai_mode": "demo",
+  "summary": {
+    "total": 69,
+    "passed": 69,
+    "accuracy": 1.0,
+    "by_category": {
+      "contradictory": {
+        "total": 6,
+        "passed": 6,
+        "accuracy": 1.0
+      },
+      "fabricated-contribution": {
+        "total": 12,
+        "passed": 12,
+        "accuracy": 1.0
+      },
+      "false-numeric": {
+        "total": 15,
+        "passed": 15,
+        "accuracy": 1.0
+      },
+      "grounded": {
+        "total": 3,
+        "passed": 3,
+        "accuracy": 1.0
+      },
+      "missing-evidence": {
+        "total": 9,
+        "passed": 9,
+        "accuracy": 1.0
+      },
+      "supported": {
+        "total": 24,
+        "passed": 24,
+        "accuracy": 1.0
+      }
+    },
+    "confusion": {
+      "verified": {
+        "verified": 27
+      },
+      "corrected": {
+        "corrected": 18
+      },
+      "unsupported": {
+        "unsupported": 15
+      },
+      "unverified": {
+        "unverified": 9
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "comeback-20261-s1",
+      "scenario": "comeback",
+      "category": "supported",
+      "text": "North City FC have had 23 shots and 4 on target.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots",
+          "subject": "north-city",
+          "claimed": 23.0,
+          "actual": 23.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0192",
+            "E0542",
+            "E0797",
+            "E0807",
+            "E0821",
+            "E0851"
+          ]
+        },
+        {
+          "metric": "shots_on_target",
+          "subject": "north-city",
+          "claimed": 4.0,
+          "actual": 4.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0928",
+            "E1046",
+            "E1113",
+            "E1305"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "comeback-20261-s2",
+      "scenario": "comeback",
+      "category": "supported",
+      "text": "Viktor Lindgren scored in the 18th minute.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Viktor Lindgren",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0286"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "comeback-20261-s3",
+      "scenario": "comeback",
+      "category": "supported",
+      "text": "Dani Castellano made 21 progressive passes.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "progressive_passes",
+          "subject": "Dani Castellano",
+          "claimed": 21.0,
+          "actual": 21.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0191",
+            "E0541",
+            "E0788",
+            "E0804",
+            "E0806",
+            "E0855"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "comeback-20261-s4",
+      "scenario": "comeback",
+      "category": "supported",
+      "text": "In the first half North City FC had 47% possession.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 2700,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "possession_pct",
+          "subject": "north-city",
+          "claimed": 47.0,
+          "actual": 47.4,
+          "status": "verified",
+          "evidence_ids": [
+            "E0011",
+            "E0013",
+            "E0020",
+            "E0021",
+            "E0022",
+            "E0030"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "comeback-20261-s5",
+      "scenario": "comeback",
+      "category": "supported",
+      "text": "South United FC have won 1 corners.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "corners",
+          "subject": "south-united",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0257"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "comeback-20261-s6",
+      "scenario": "comeback",
+      "category": "supported",
+      "text": "Elias Ferreira has 20 recoveries and 4 interceptions.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "recoveries",
+          "subject": "Elias Ferreira",
+          "claimed": 20.0,
+          "actual": 20.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0106",
+            "E0135",
+            "E0161",
+            "E0185",
+            "E0217",
+            "E0223"
+          ]
+        },
+        {
+          "metric": "interceptions",
+          "subject": "Elias Ferreira",
+          "claimed": 4.0,
+          "actual": 4.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0143",
+            "E0261",
+            "E0698",
+            "E0908"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "comeback-20261-f1",
+      "scenario": "comeback",
+      "category": "false-numeric",
+      "text": "North City FC has dominated the last ten minutes with 85% possession.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 4020,
+      "notes": "actual 56.7%",
+      "claims": [
+        {
+          "metric": "possession_pct",
+          "subject": "north-city",
+          "claimed": 85.0,
+          "actual": 57.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0907",
+            "E0911",
+            "E0912",
+            "E0913",
+            "E0914",
+            "E0919"
+          ]
+        }
+      ],
+      "corrected_text": "North City FC held a narrow possession advantage (57%) in the last 10 minutes (57' to 67'), but neither team established overwhelming control."
+    },
+    {
+      "id": "comeback-20261-f2",
+      "scenario": "comeback",
+      "category": "false-numeric",
+      "text": "North City FC have had 30 shots tonight.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots",
+          "subject": "north-city",
+          "claimed": 30.0,
+          "actual": 23.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0192",
+            "E0542",
+            "E0797",
+            "E0807",
+            "E0821",
+            "E0851"
+          ]
+        }
+      ],
+      "corrected_text": "North City FC recorded 23 shots in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "comeback-20261-f3",
+      "scenario": "comeback",
+      "category": "false-numeric",
+      "text": "Dani Castellano made 33 progressive passes.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "progressive_passes",
+          "subject": "Dani Castellano",
+          "claimed": 33.0,
+          "actual": 21.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0191",
+            "E0541",
+            "E0788",
+            "E0804",
+            "E0806",
+            "E0855"
+          ]
+        }
+      ],
+      "corrected_text": "Dani Castellano recorded 21 progressive passes in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "comeback-20261-f4",
+      "scenario": "comeback",
+      "category": "false-numeric",
+      "text": "Viktor Lindgren scored a hat-trick.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Viktor Lindgren",
+          "claimed": 3.0,
+          "actual": 1.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0286"
+          ]
+        }
+      ],
+      "corrected_text": "Viktor Lindgren has 1 goals in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "comeback-20261-f5",
+      "scenario": "comeback",
+      "category": "false-numeric",
+      "text": "South United FC have had 5 shots on target.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots_on_target",
+          "subject": "south-united",
+          "claimed": 5.0,
+          "actual": 2.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0285",
+            "E0650"
+          ]
+        }
+      ],
+      "corrected_text": "South United FC recorded 2 shots on target in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "comeback-20261-x1",
+      "scenario": "comeback",
+      "category": "fabricated-contribution",
+      "text": "Elias Ferreira scored twice.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Elias Ferreira",
+          "claimed": 2.0,
+          "actual": 0.0,
+          "status": "unsupported",
+          "evidence_ids": [
+            "E0286",
+            "E0651",
+            "E0929",
+            "E1114",
+            "E1306"
+          ]
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "comeback-20261-x2",
+      "scenario": "comeback",
+      "category": "fabricated-contribution",
+      "text": "Ansel Kuyt assisted the winner.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "assists",
+          "subject": "Ansel Kuyt",
+          "claimed": 1.0,
+          "actual": 0.0,
+          "status": "unsupported",
+          "evidence_ids": [
+            "E0286",
+            "E0651",
+            "E0929",
+            "E1114",
+            "E1306"
+          ]
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "comeback-20261-x3",
+      "scenario": "comeback",
+      "category": "fabricated-contribution",
+      "text": "Jordan Blake scored the equaliser.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Jordan Blake",
+          "claimed": 1.0,
+          "actual": null,
+          "status": "unsupported",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "comeback-20261-x4",
+      "scenario": "comeback",
+      "category": "fabricated-contribution",
+      "text": "Ansel Kuyt made 6 tackles.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "player exists but played 0 minutes: figure corrected to 0",
+      "claims": [
+        {
+          "metric": "tackles",
+          "subject": "Ansel Kuyt",
+          "claimed": 6.0,
+          "actual": 0.0,
+          "status": "corrected",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": "Ansel Kuyt recorded 0 tackles in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "comeback-20261-m1",
+      "scenario": "comeback",
+      "category": "missing-evidence",
+      "text": "North City FC look nervous at the back.",
+      "expected": "unverified",
+      "got": "unverified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": null,
+          "subject": "north-city",
+          "claimed": null,
+          "actual": null,
+          "status": "unverified",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "comeback-20261-m2",
+      "scenario": "comeback",
+      "category": "missing-evidence",
+      "text": "The referee has lost control of this match.",
+      "expected": "unverified",
+      "got": "unverified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": null,
+          "subject": null,
+          "claimed": null,
+          "actual": null,
+          "status": "unverified",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "comeback-20261-m3",
+      "scenario": "comeback",
+      "category": "missing-evidence",
+      "text": "South United FC have covered 112 kilometres as a team.",
+      "expected": "unverified",
+      "got": "unverified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "distance covered is not tracked",
+      "claims": [
+        {
+          "metric": null,
+          "subject": "south-united",
+          "claimed": null,
+          "actual": null,
+          "status": "unverified",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "comeback-20261-c1",
+      "scenario": "comeback",
+      "category": "contradictory",
+      "text": "South United FC have had more shots than North City FC.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots",
+          "subject": "south-united",
+          "claimed": null,
+          "actual": 13.0,
+          "status": "unsupported",
+          "evidence_ids": [
+            "E0028",
+            "E0251",
+            "E0256",
+            "E0285",
+            "E0352",
+            "E0355"
+          ]
+        }
+      ],
+      "corrected_text": "North City FC had the edge in shots (23 to 13) in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "comeback-20261-c2",
+      "scenario": "comeback",
+      "category": "contradictory",
+      "text": "Viktor Lindgren scored.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 1028,
+      "notes": "goal exists later; must not verify before it happens",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Viktor Lindgren",
+          "claimed": 1.0,
+          "actual": 0.0,
+          "status": "unsupported",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "comeback-20261-g1",
+      "scenario": "comeback",
+      "category": "grounded",
+      "text": "Between 79' and 85' North City FC scored 1 goals.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "north-city",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E1306"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "comeback-20261-s7",
+      "scenario": "comeback",
+      "category": "supported",
+      "text": "Mateusz Kr\u00f3l assisted Viktor Lindgren.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "assists",
+          "subject": "Mateusz Kr\u00f3l",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0286"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "comeback-20261-s8",
+      "scenario": "comeback",
+      "category": "supported",
+      "text": "Leo Marchetti came on for Noah Petrov.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "substitution",
+          "subject": "Noah Petrov",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0721"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-s1",
+      "scenario": "momentum-paradox",
+      "category": "supported",
+      "text": "North City FC have had 5 shots and 4 on target.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots",
+          "subject": "north-city",
+          "claimed": 5.0,
+          "actual": 5.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0141",
+            "E0177",
+            "E0448",
+            "E0624",
+            "E1195"
+          ]
+        },
+        {
+          "metric": "shots_on_target",
+          "subject": "north-city",
+          "claimed": 4.0,
+          "actual": 4.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0141",
+            "E0177",
+            "E0448",
+            "E1195"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-s2",
+      "scenario": "momentum-paradox",
+      "category": "supported",
+      "text": "Noah Petrov scored in the 27th minute.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Noah Petrov",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0449"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-s3",
+      "scenario": "momentum-paradox",
+      "category": "supported",
+      "text": "Theo Marsh made 8 progressive passes.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "progressive_passes",
+          "subject": "Theo Marsh",
+          "claimed": 8.0,
+          "actual": 8.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0022",
+            "E0115",
+            "E0189",
+            "E0447",
+            "E0572",
+            "E0859"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-s4",
+      "scenario": "momentum-paradox",
+      "category": "supported",
+      "text": "In the first half North City FC had 51% possession.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 2700,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "possession_pct",
+          "subject": "north-city",
+          "claimed": 51.0,
+          "actual": 51.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0003",
+            "E0004",
+            "E0011",
+            "E0013",
+            "E0020",
+            "E0021"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-s5",
+      "scenario": "momentum-paradox",
+      "category": "supported",
+      "text": "South United FC have won 11 corners.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "corners",
+          "subject": "south-united",
+          "claimed": 11.0,
+          "actual": 11.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0241",
+            "E0313",
+            "E0317",
+            "E0373",
+            "E0522",
+            "E0735"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-s6",
+      "scenario": "momentum-paradox",
+      "category": "supported",
+      "text": "Elias Ferreira has 13 recoveries and 6 interceptions.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "recoveries",
+          "subject": "Elias Ferreira",
+          "claimed": 13.0,
+          "actual": 13.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0070",
+            "E0162",
+            "E0232",
+            "E0274",
+            "E0284",
+            "E0420"
+          ]
+        },
+        {
+          "metric": "interceptions",
+          "subject": "Elias Ferreira",
+          "claimed": 6.0,
+          "actual": 6.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0473",
+            "E0477",
+            "E0500",
+            "E0831",
+            "E0912",
+            "E1307"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-f1",
+      "scenario": "momentum-paradox",
+      "category": "false-numeric",
+      "text": "North City FC has dominated the last ten minutes with 85% possession.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 4020,
+      "notes": "actual 35.0%",
+      "claims": [
+        {
+          "metric": "possession_pct",
+          "subject": "north-city",
+          "claimed": 85.0,
+          "actual": 35.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0881",
+            "E0895",
+            "E0903",
+            "E0911",
+            "E0916",
+            "E0923"
+          ]
+        }
+      ],
+      "corrected_text": "North City FC saw less of the ball in the last 10 minutes (57' to 67'), with 35% possession."
+    },
+    {
+      "id": "momentum-paradox-20262-f2",
+      "scenario": "momentum-paradox",
+      "category": "false-numeric",
+      "text": "North City FC have had 12 shots tonight.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots",
+          "subject": "north-city",
+          "claimed": 12.0,
+          "actual": 5.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0141",
+            "E0177",
+            "E0448",
+            "E0624",
+            "E1195"
+          ]
+        }
+      ],
+      "corrected_text": "North City FC recorded 5 shots in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "momentum-paradox-20262-f3",
+      "scenario": "momentum-paradox",
+      "category": "false-numeric",
+      "text": "Theo Marsh made 20 progressive passes.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "progressive_passes",
+          "subject": "Theo Marsh",
+          "claimed": 20.0,
+          "actual": 8.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0022",
+            "E0115",
+            "E0189",
+            "E0447",
+            "E0572",
+            "E0859"
+          ]
+        }
+      ],
+      "corrected_text": "Theo Marsh recorded 8 progressive passes in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "momentum-paradox-20262-f4",
+      "scenario": "momentum-paradox",
+      "category": "false-numeric",
+      "text": "Noah Petrov scored a hat-trick.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Noah Petrov",
+          "claimed": 3.0,
+          "actual": 1.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0449"
+          ]
+        }
+      ],
+      "corrected_text": "Noah Petrov has 1 goals in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "momentum-paradox-20262-f5",
+      "scenario": "momentum-paradox",
+      "category": "false-numeric",
+      "text": "South United FC have had 14 shots on target.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots_on_target",
+          "subject": "south-united",
+          "claimed": 14.0,
+          "actual": 11.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0240",
+            "E0312",
+            "E0372",
+            "E0503",
+            "E0727",
+            "E0891"
+          ]
+        }
+      ],
+      "corrected_text": "South United FC recorded 11 shots on target in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "momentum-paradox-20262-x1",
+      "scenario": "momentum-paradox",
+      "category": "fabricated-contribution",
+      "text": "Jamal Osei scored twice.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Jamal Osei",
+          "claimed": 2.0,
+          "actual": 0.0,
+          "status": "unsupported",
+          "evidence_ids": [
+            "E0449",
+            "E1027",
+            "E1196"
+          ]
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "momentum-paradox-20262-x2",
+      "scenario": "momentum-paradox",
+      "category": "fabricated-contribution",
+      "text": "Leo Marchetti assisted the winner.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "assists",
+          "subject": "Leo Marchetti",
+          "claimed": 1.0,
+          "actual": 0.0,
+          "status": "unsupported",
+          "evidence_ids": [
+            "E0449",
+            "E1027",
+            "E1196"
+          ]
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "momentum-paradox-20262-x3",
+      "scenario": "momentum-paradox",
+      "category": "fabricated-contribution",
+      "text": "Jordan Blake scored the equaliser.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Jordan Blake",
+          "claimed": 1.0,
+          "actual": null,
+          "status": "unsupported",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "momentum-paradox-20262-x4",
+      "scenario": "momentum-paradox",
+      "category": "fabricated-contribution",
+      "text": "Leo Marchetti made 6 tackles.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "player exists but played 0 minutes: figure corrected to 0",
+      "claims": [
+        {
+          "metric": "tackles",
+          "subject": "Leo Marchetti",
+          "claimed": 6.0,
+          "actual": 0.0,
+          "status": "corrected",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": "Leo Marchetti recorded 0 tackles in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "momentum-paradox-20262-m1",
+      "scenario": "momentum-paradox",
+      "category": "missing-evidence",
+      "text": "North City FC look nervous at the back.",
+      "expected": "unverified",
+      "got": "unverified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": null,
+          "subject": "north-city",
+          "claimed": null,
+          "actual": null,
+          "status": "unverified",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-m2",
+      "scenario": "momentum-paradox",
+      "category": "missing-evidence",
+      "text": "The referee has lost control of this match.",
+      "expected": "unverified",
+      "got": "unverified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": null,
+          "subject": null,
+          "claimed": null,
+          "actual": null,
+          "status": "unverified",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-m3",
+      "scenario": "momentum-paradox",
+      "category": "missing-evidence",
+      "text": "South United FC have covered 112 kilometres as a team.",
+      "expected": "unverified",
+      "got": "unverified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "distance covered is not tracked",
+      "claims": [
+        {
+          "metric": null,
+          "subject": "south-united",
+          "claimed": null,
+          "actual": null,
+          "status": "unverified",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-c1",
+      "scenario": "momentum-paradox",
+      "category": "contradictory",
+      "text": "North City FC have had more shots than South United FC.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots",
+          "subject": "north-city",
+          "claimed": null,
+          "actual": 5.0,
+          "status": "unsupported",
+          "evidence_ids": [
+            "E0141",
+            "E0177",
+            "E0448",
+            "E0624",
+            "E1195"
+          ]
+        }
+      ],
+      "corrected_text": "South United FC had the edge in shots (31 to 5) in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "momentum-paradox-20262-c2",
+      "scenario": "momentum-paradox",
+      "category": "contradictory",
+      "text": "Noah Petrov scored.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 1572,
+      "notes": "goal exists later; must not verify before it happens",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Noah Petrov",
+          "claimed": 1.0,
+          "actual": 0.0,
+          "status": "unsupported",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "momentum-paradox-20262-g1",
+      "scenario": "momentum-paradox",
+      "category": "grounded",
+      "text": "Between 74' and 80' North City FC scored 1 goals.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "north-city",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E1196"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-s7",
+      "scenario": "momentum-paradox",
+      "category": "supported",
+      "text": "Theo Marsh assisted Noah Petrov.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "assists",
+          "subject": "Theo Marsh",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0449"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "momentum-paradox-20262-s8",
+      "scenario": "momentum-paradox",
+      "category": "supported",
+      "text": "Ciro Mancini came on for Arlo Beckett.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "substitution",
+          "subject": "Arlo Beckett",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0921"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-s1",
+      "scenario": "hidden-hero",
+      "category": "supported",
+      "text": "North City FC have had 17 shots and 10 on target.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots",
+          "subject": "north-city",
+          "claimed": 17.0,
+          "actual": 17.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0253",
+            "E0302",
+            "E0394",
+            "E0405",
+            "E0552",
+            "E0559"
+          ]
+        },
+        {
+          "metric": "shots_on_target",
+          "subject": "north-city",
+          "claimed": 10.0,
+          "actual": 10.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0302",
+            "E0394",
+            "E0405",
+            "E0552",
+            "E0586",
+            "E0652"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-s2",
+      "scenario": "hidden-hero",
+      "category": "supported",
+      "text": "Dani Castellano scored in the 24th minute.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Dani Castellano",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0406"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-s3",
+      "scenario": "hidden-hero",
+      "category": "supported",
+      "text": "Theo Marsh made 34 progressive passes.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "progressive_passes",
+          "subject": "Theo Marsh",
+          "claimed": 34.0,
+          "actual": 34.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0008",
+            "E0017",
+            "E0102",
+            "E0120",
+            "E0207",
+            "E0252"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-s4",
+      "scenario": "hidden-hero",
+      "category": "supported",
+      "text": "In the first half North City FC had 57% possession.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 2700,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "possession_pct",
+          "subject": "north-city",
+          "claimed": 57.0,
+          "actual": 57.1,
+          "status": "verified",
+          "evidence_ids": [
+            "E0002",
+            "E0008",
+            "E0015",
+            "E0017",
+            "E0018",
+            "E0024"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-s5",
+      "scenario": "hidden-hero",
+      "category": "supported",
+      "text": "South United FC have won 0 corners.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "corners",
+          "subject": "south-united",
+          "claimed": 0.0,
+          "actual": 0.0,
+          "status": "verified",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-s6",
+      "scenario": "hidden-hero",
+      "category": "supported",
+      "text": "Pablo Iriarte has 20 recoveries and 6 interceptions.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "recoveries",
+          "subject": "Pablo Iriarte",
+          "claimed": 20.0,
+          "actual": 20.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0080",
+            "E0088",
+            "E0240",
+            "E0255",
+            "E0306",
+            "E0311"
+          ]
+        },
+        {
+          "metric": "interceptions",
+          "subject": "Pablo Iriarte",
+          "claimed": 6.0,
+          "actual": 6.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0211",
+            "E0339",
+            "E0994",
+            "E1155",
+            "E1160",
+            "E1390"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-f1",
+      "scenario": "hidden-hero",
+      "category": "false-numeric",
+      "text": "North City FC has dominated the last ten minutes with 85% possession.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 4020,
+      "notes": "actual 55.7%",
+      "claims": [
+        {
+          "metric": "possession_pct",
+          "subject": "north-city",
+          "claimed": 85.0,
+          "actual": 55.4,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0955",
+            "E0960",
+            "E0961",
+            "E0963",
+            "E0964",
+            "E0973"
+          ]
+        }
+      ],
+      "corrected_text": "North City FC held a narrow possession advantage (55%) in the last 10 minutes (57' to 67'), but neither team established overwhelming control."
+    },
+    {
+      "id": "hidden-hero-20263-f2",
+      "scenario": "hidden-hero",
+      "category": "false-numeric",
+      "text": "North City FC have had 24 shots tonight.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots",
+          "subject": "north-city",
+          "claimed": 24.0,
+          "actual": 17.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0253",
+            "E0302",
+            "E0394",
+            "E0405",
+            "E0552",
+            "E0559"
+          ]
+        }
+      ],
+      "corrected_text": "North City FC recorded 17 shots in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "hidden-hero-20263-f3",
+      "scenario": "hidden-hero",
+      "category": "false-numeric",
+      "text": "Theo Marsh made 46 progressive passes.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "progressive_passes",
+          "subject": "Theo Marsh",
+          "claimed": 46.0,
+          "actual": 34.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0008",
+            "E0017",
+            "E0102",
+            "E0120",
+            "E0207",
+            "E0252"
+          ]
+        }
+      ],
+      "corrected_text": "Theo Marsh recorded 34 progressive passes in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "hidden-hero-20263-f4",
+      "scenario": "hidden-hero",
+      "category": "false-numeric",
+      "text": "Dani Castellano scored a hat-trick.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Dani Castellano",
+          "claimed": 3.0,
+          "actual": 1.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0406"
+          ]
+        }
+      ],
+      "corrected_text": "Dani Castellano has 1 goals in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "hidden-hero-20263-f5",
+      "scenario": "hidden-hero",
+      "category": "false-numeric",
+      "text": "South United FC have had 5 shots on target.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots_on_target",
+          "subject": "south-united",
+          "claimed": 5.0,
+          "actual": 2.0,
+          "status": "corrected",
+          "evidence_ids": [
+            "E0868",
+            "E1321"
+          ]
+        }
+      ],
+      "corrected_text": "South United FC recorded 2 shots on target in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "hidden-hero-20263-x1",
+      "scenario": "hidden-hero",
+      "category": "fabricated-contribution",
+      "text": "Theo Marsh scored twice.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Theo Marsh",
+          "claimed": 2.0,
+          "actual": 0.0,
+          "status": "unsupported",
+          "evidence_ids": [
+            "E0406",
+            "E0869",
+            "E1266"
+          ]
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "hidden-hero-20263-x2",
+      "scenario": "hidden-hero",
+      "category": "fabricated-contribution",
+      "text": "Ibrahim Keita assisted the winner.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "assists",
+          "subject": "Ibrahim Keita",
+          "claimed": 1.0,
+          "actual": 0.0,
+          "status": "unsupported",
+          "evidence_ids": [
+            "E0406",
+            "E0869",
+            "E1266"
+          ]
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "hidden-hero-20263-x3",
+      "scenario": "hidden-hero",
+      "category": "fabricated-contribution",
+      "text": "Jordan Blake scored the equaliser.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Jordan Blake",
+          "claimed": 1.0,
+          "actual": null,
+          "status": "unsupported",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "hidden-hero-20263-x4",
+      "scenario": "hidden-hero",
+      "category": "fabricated-contribution",
+      "text": "Ibrahim Keita made 6 tackles.",
+      "expected": "corrected",
+      "got": "corrected",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "player exists but played 0 minutes: figure corrected to 0",
+      "claims": [
+        {
+          "metric": "tackles",
+          "subject": "Ibrahim Keita",
+          "claimed": 6.0,
+          "actual": 0.0,
+          "status": "corrected",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": "Ibrahim Keita recorded 0 tackles in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "hidden-hero-20263-m1",
+      "scenario": "hidden-hero",
+      "category": "missing-evidence",
+      "text": "North City FC look nervous at the back.",
+      "expected": "unverified",
+      "got": "unverified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": null,
+          "subject": "north-city",
+          "claimed": null,
+          "actual": null,
+          "status": "unverified",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-m2",
+      "scenario": "hidden-hero",
+      "category": "missing-evidence",
+      "text": "The referee has lost control of this match.",
+      "expected": "unverified",
+      "got": "unverified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": null,
+          "subject": null,
+          "claimed": null,
+          "actual": null,
+          "status": "unverified",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-m3",
+      "scenario": "hidden-hero",
+      "category": "missing-evidence",
+      "text": "South United FC have covered 112 kilometres as a team.",
+      "expected": "unverified",
+      "got": "unverified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "distance covered is not tracked",
+      "claims": [
+        {
+          "metric": null,
+          "subject": "south-united",
+          "claimed": null,
+          "actual": null,
+          "status": "unverified",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-c1",
+      "scenario": "hidden-hero",
+      "category": "contradictory",
+      "text": "South United FC have had more shots than North City FC.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "shots",
+          "subject": "south-united",
+          "claimed": null,
+          "actual": 5.0,
+          "status": "unsupported",
+          "evidence_ids": [
+            "E0203",
+            "E0467",
+            "E0868",
+            "E1281",
+            "E1321"
+          ]
+        }
+      ],
+      "corrected_text": "North City FC had the edge in shots (17 to 5) in the whole match so far (0' to 90')."
+    },
+    {
+      "id": "hidden-hero-20263-c2",
+      "scenario": "hidden-hero",
+      "category": "contradictory",
+      "text": "Dani Castellano scored.",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "pass": true,
+      "at_t": 1394,
+      "notes": "goal exists later; must not verify before it happens",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "Dani Castellano",
+          "claimed": 1.0,
+          "actual": 0.0,
+          "status": "unsupported",
+          "evidence_ids": []
+        }
+      ],
+      "corrected_text": ""
+    },
+    {
+      "id": "hidden-hero-20263-g1",
+      "scenario": "hidden-hero",
+      "category": "grounded",
+      "text": "Between 72' and 78' North City FC scored 1 goals.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "goals",
+          "subject": "north-city",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E1266"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-s7",
+      "scenario": "hidden-hero",
+      "category": "supported",
+      "text": "Theo Marsh assisted Dani Castellano.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "assists",
+          "subject": "Theo Marsh",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E0406"
+          ]
+        }
+      ],
+      "corrected_text": null
+    },
+    {
+      "id": "hidden-hero-20263-s8",
+      "scenario": "hidden-hero",
+      "category": "supported",
+      "text": "Ciro Mancini came on for Arlo Beckett.",
+      "expected": "verified",
+      "got": "verified",
+      "pass": true,
+      "at_t": 5400,
+      "notes": "",
+      "claims": [
+        {
+          "metric": "substitution",
+          "subject": "Arlo Beckett",
+          "claimed": 1.0,
+          "actual": 1.0,
+          "status": "verified",
+          "evidence_ids": [
+            "E1010"
+          ]
+        }
+      ],
+      "corrected_text": null
+    }
+  ],
+  "foundry_groundedness": {
+    "ran": false,
+    "reason": "not requested (pass --foundry)"
+  }
+}

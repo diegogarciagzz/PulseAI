@@ -1,0 +1,29 @@
+{
+  "note": "Utility icons come from lucide-react (ISC licence). Key = PULSE AI name, value = Lucide icon name.",
+  "map": {
+    "replay": "rotate-ccw",
+    "play": "play",
+    "pause": "pause",
+    "skip-forward": "skip-forward",
+    "settings": "settings-2",
+    "search": "search",
+    "close": "x",
+    "menu": "menu",
+    "share": "share-2",
+    "download": "download",
+    "external": "arrow-up-right",
+    "info": "info",
+    "clock": "clock",
+    "filter": "sliders-horizontal",
+    "expand": "maximize-2",
+    "collapse": "minimize-2",
+    "chevron-left": "chevron-left",
+    "chevron-right": "chevron-right",
+    "chevron-down": "chevron-down",
+    "copy": "copy",
+    "volume": "volume-2",
+    "mute": "volume-x",
+    "sparkles": "sparkles",
+    "user": "user"
+  }
+}
