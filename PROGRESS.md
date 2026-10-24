@@ -18,6 +18,6 @@ Resume instructions: read this file, then `README.md` and `docs/architecture.md`
 - Repository is not yet a git repo and not public (user action: `git init`, review, publish).
 
 ## Next priorities
-1. Deploy a public test build (Azure Container Apps) for the judges; keep it available until Nov 10.
+1. [x] Deployed (Oct 24): https://pulse-ai.whitestone-5de70be6.eastus.azurecontainerapps.io (Container Apps, managed identity -> Foundry, credential_source=managed identity). Redeploy after a new image: `bash deploy/azure-containerapps.sh`. Keep it running until Nov 10.
 2. Record the demo video following `docs/demo-script.md`.
 3. Optional: broadcast overlay preview tab using `BroadcastStage` + `GoalAnnouncement` + `VarBanner`.
