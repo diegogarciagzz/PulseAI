@@ -236,7 +236,9 @@ async def debate(match_id: str, refresh: bool = False) -> DebateResult:
     if not refresh and match_id in _debate_cache:
         return _debate_cache[match_id]
     result = await run_debate(m)
-    _debate_cache[match_id] = result
+    from app.ai.provider import provider as _provider
+    if result.ai_mode == _provider().mode:  # never cache a demo fallback in place of a live debate
+        _debate_cache[match_id] = result
     return result
 
 

@@ -83,6 +83,9 @@ class FoundryProvider(BaseProvider):
         return text
 
     async def complete_json(self, system: str, user: str, *, fallback: dict[str, Any]) -> tuple[dict[str, Any], str]:
+        from app.ai.guard import check_model_call
+
+        check_model_call(1)
         try:
             text = await asyncio.wait_for(asyncio.to_thread(self._call, system, user), timeout=settings.ai_timeout_seconds)
         except asyncio.TimeoutError as e:

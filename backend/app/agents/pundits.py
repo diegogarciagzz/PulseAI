@@ -188,6 +188,9 @@ async def _foundry_round(prov: FoundryProvider, cands: list[CandidateScore], tab
     from agent_framework import Agent
     from agent_framework.foundry import FoundryChatClient
 
+    from app.ai.guard import check_model_call
+
+    check_model_call(len(PERSONAS))
     ids = ", ".join(c.player_id for c in cands)
     client = FoundryChatClient(project_endpoint=prov.endpoint, model=prov.model, credential=prov.credential)
 

@@ -69,6 +69,10 @@ Restart the backend. `GET /api/system/capabilities` and the header badge report 
 
 Live status (verified October 24, 2026): running against a real Microsoft Foundry project with a `gpt-5-mini` deployment, insight explanations come back with `source=foundry` and the AI Studio debate runs as three Microsoft Agent Framework agents (`source=agent-framework`, 2 rounds, about 30 s), with every argument checked by Narrative VAR. `python scripts/foundry_smoke.py` reproduces this check against a running backend; `python scripts/foundry_diag.py` prints the project's deployments and the raw response of a minimal call when something is misconfigured. Demo mode remains the default without credentials.
 
+## Deploy (Azure Container Apps)
+
+One container serves the API and the built frontend. GitHub Actions builds `ghcr.io/diegogarciagzz/pulseai`, and `bash deploy/azure-containerapps.sh` deploys it to Azure Container Apps with a managed identity that has the Foundry User role, so no keys are stored anywhere. The public demo caps Foundry usage with a daily call budget and a per-address hourly limit, falling back to labelled demo output. Details: [`docs/deployment.md`](docs/deployment.md).
+
 ## Tests
 
 ```bash

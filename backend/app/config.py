@@ -24,6 +24,11 @@ class Settings(BaseSettings):
     enable_groundedness_evaluator: bool = False
     ai_timeout_seconds: float = 40.0
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
+    # Public deployment guardrails (0 = off). See app/ai/guard.py.
+    pulse_ai_daily_call_budget: int = 0
+    pulse_ai_ip_limit_per_hour: int = 0
+    # Built frontend served by the API in the container (defaults to frontend/dist when it exists).
+    pulse_static_dir: str | None = None
 
 
 settings = Settings()
