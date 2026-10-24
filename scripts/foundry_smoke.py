@@ -10,6 +10,18 @@ import sys
 import time
 import urllib.request
 
+# Trust the operating system's certificate store (macOS keychain / Windows store). Needed on
+# python.org builds without certificates and on networks that inspect HTTPS with their own root.
+try:
+    import truststore
+    truststore.inject_into_ssl()
+except ImportError:
+    try:
+        from pip._vendor import truststore  # bundled with recent pip
+        truststore.inject_into_ssl()
+    except Exception:  # noqa: BLE001
+        pass
+
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:8000").rstrip("/") + "/api"
 
 
