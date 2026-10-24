@@ -80,3 +80,22 @@ describe('broadcast auto director', () => {
     expect(scoreAt(events, 5400)).toEqual([1, 1]);
   });
 });
+
+describe('broadcast stand-in feed', () => {
+  it('projects pitch metres with the camera used by the CSS pitch', async () => {
+    const { project, panFor, pickTrail, possessionEvent } = await import('../features/broadcast/feed');
+    const centre = project(52.5, 34, 0);
+    expect(centre.x).toBeCloseTo(960, 5);
+    const far = project(52.5, 0, 0), near = project(52.5, 68, 0);
+    expect(far.y).toBeLessThan(centre.y);
+    expect(near.y).toBeGreaterThan(centre.y);
+    expect(far.s).toBeLessThan(near.s); // farther away looks smaller
+    expect(project(52.5, 34, 120).x).toBeCloseTo(1080, 5);
+    expect(panFor(52.5)).toBe(0);
+    expect(panFor(100)).toBeLessThan(0); // ball on the right: the camera pans right
+
+    const evs = [ev('E1', 100, 'pass'), ev('E2', 130, 'carry'), ev('E3', 140, 'foul', { team: 'south-united' }), ev('E4', 150, 'substitution')];
+    expect(pickTrail(evs, 150).map(e => e.id)).toEqual(['E2', 'E3']); // E1 is older than the trail window, substitutions have no ball
+    expect(possessionEvent(evs)?.id).toBe('E2'); // a foul does not give the fouling side the ball
+  });
+});

@@ -83,28 +83,6 @@ function smoothPath(pts: [number, number][]): string {
   return d;
 }
 
-/* ------------------------------------------------------------------ */
-/* Stand-in feed: a virtual camera over the tactical pitch that follows */
-/* the ball position of the latest event. Clearly labelled as a stand-in. */
-/* ------------------------------------------------------------------ */
-export function StandInFeed({ ball }: { ball: { x: number; y: number } | null }) {
-  const x = ball?.x ?? 52.5, y = ball?.y ?? 34;
-  const pan = Math.round((52.5 - x) * (2400 / 113) * 0.3);
-  return (
-    <div className="bc-feed" aria-hidden>
-      <div className="bc-feed__sky" />
-      <div className="bc-feed__stands" />
-      <div className="bc-feed__cam" style={{ ['--pan' as string]: `${pan}px` }}>
-        <img src={`${A}/pitch/field.svg`} alt="" />
-        {ball && <i className="bc-feed__ball" style={{ left: `${((x + 4) / 113) * 100}%`, top: `${((y + 4) / 76) * 100}%` }} />}
-      </div>
-      <div className="bc-feed__lights" />
-      <div className="bc-feed__vignette" />
-      <div className="bc-feed__tag">STAND-IN FEED  /  SYNTHETIC MATCH DATA</div>
-    </div>
-  );
-}
-
 /** Match Pulse line for the broadcast frame: 0' to 90' across 640 x 190, real data up to the clock. */
 export function PulseMini({ pulse, goals, home }: { pulse: PulsePoint[]; goals: MatchEvent[]; home: TeamId }) {
   const id = React.useId().replace(/:/g, '');

@@ -11,7 +11,8 @@ import { HALF_T } from '../../hooks/useReplay';
 import { api } from '../../services/api';
 import { useMatch } from '../../state/MatchContext';
 import type { ClaimExample, DebateResult, MomentumInsight } from '../../types/api';
-import { OnAir, PulseMini, StandInFeed, type OnAirContext } from './cues';
+import { OnAir, PulseMini, type OnAirContext } from './cues';
+import { PossessionChip, StandInFeed, ballAfter, captionEvent, pickTrail, possessionEvent } from './feed';
 import { EMPTY_DIRECTOR, MOMENTUM_KINDS, autoCues, directorReducer, type Cue, type CueKind } from './director';
 
 const PUNDIT_ORDER: PunditId[] = ['analyst', 'fan', 'tactician'];
@@ -28,6 +29,7 @@ export function Broadcast() {
   const [dir, dispatch] = React.useReducer(directorReducer, EMPTY_DIRECTOR);
   const [auto, setAuto] = React.useState(true);
   const [showPulse, setShowPulse] = React.useState(true);
+  const [showPoss, setShowPoss] = React.useState(true);
   const [roundtable, setRoundtable] = React.useState<{ matchId: string; debate: DebateResult | null; error: string | null } | null>(null);
   const [debateBusy, setDebateBusy] = React.useState(false);
   const [examples, setExamples] = React.useState<ClaimExample[]>([]);
@@ -90,6 +92,10 @@ export function Broadcast() {
   const lastGoal = React.useMemo(() => [...visible].reverse().find(e => e.type === 'goal'), [visible]);
   const onBall = React.useMemo(() => [...visible].reverse().find(e => e.player_id), [visible]);
   const ballEvent = React.useMemo(() => [...visible].reverse().find(e => e.pitch_x !== null && e.pitch_y !== null), [visible]);
+  const trail = React.useMemo(() => pickTrail(visible, t), [visible, t]);
+  const possession = React.useMemo(() => possessionEvent(visible), [visible]);
+  const caption = React.useMemo(() => captionEvent(visible, t, replay.state.speed), [visible, t, replay.state.speed]);
+  const numbers = React.useMemo(() => Object.fromEntries(Object.values(match?.teams ?? {}).flatMap(tm => tm.players.map(p => [p.id, p.number]))), [match]);
   const goalsSoFar = React.useMemo(() => visible.filter(e => e.type === 'goal'), [visible]);
   const lastMomentum = latest(replay.visibleInsights, i => MOMENTUM_KINDS.has(i.kind));
   const lastForAi = latest(replay.visibleInsights, i => i.kind !== 'goal-buildup' && i.importance >= 0.6) ?? latest(replay.visibleInsights, () => true);
@@ -151,15 +157,17 @@ export function Broadcast() {
     matchId: match.meta.id, home, away, events, pulse, insights, debate, aiMode: capabilities?.ai_mode ?? 'demo', requests,
   };
   const title = current?.kind === 'halftime' || current?.kind === 'fulltime';
-  const pulseOn = showPulse && (!current || current.kind === 'momentum');
+  // the mini chart sits top-right (clear of the near touchline); it gives way to any graphic
+  const pulseOn = showPulse && !current;
 
   return (
     <>
       <ReplayControls compact />
       <div className="bc-frame" ref={frameRef} data-fullscreen={fullscreen || undefined}>
         <div className="bc-stage-wrap">
-          <BroadcastStage background={<StandInFeed ball={ballEvent ? { x: ballEvent.pitch_x!, y: ballEvent.pitch_y! } : null} />}>
+          <BroadcastStage background={<StandInFeed trail={trail} ball={ballEvent ? ballAfter(ballEvent, home) : null} home={home} numbers={numbers} />}>
             {!title && <ScoreBug home={home} away={away} homeScore={replay.score.home} awayScore={replay.score.away} clock={clock(t)} live={playing} />}
+            {!title && showPoss && <PossessionChip possession={possession} caption={caption} home={home} speed={replay.state.speed} />}
             {pulseOn && (
               <MatchPulseFrame homeLabel={TEAMS[home].short} awayLabel={TEAMS[away].short}>
                 <PulseMini pulse={replay.visiblePulse} goals={goalsSoFar} home={home} />
@@ -178,8 +186,9 @@ export function Broadcast() {
               <button aria-pressed={auto} onClick={() => setAuto(true)} title="Graphics follow the event stream">AUTO</button>
               <button aria-pressed={!auto} onClick={() => setAuto(false)} title="Only manual cues">MANUAL</button>
             </div>
-            <div className="btn-group" role="group" aria-label="Match Pulse mini chart">
+            <div className="btn-group" role="group" aria-label="Stage layers">
               <button aria-pressed={showPulse} onClick={() => setShowPulse(v => !v)} title="Show the Match Pulse mini chart when nothing else is on air">PULSE CHART</button>
+              <button aria-pressed={showPoss} onClick={() => setShowPoss(v => !v)} title="Show who has the ball and the latest action under the score bug">PLAY-BY-PLAY</button>
             </div>
             <button className="btn btn--primary btn--sm" onClick={toggleFullscreen}><Maximize />Full screen</button>
           </div>

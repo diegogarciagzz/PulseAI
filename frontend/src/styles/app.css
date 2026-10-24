@@ -283,15 +283,14 @@ img { max-width: 100%; }
 
 .bc-feed { position: absolute; inset: 0; overflow: hidden; background: #050C17; }
 .bc-feed__sky { position: absolute; inset: 0; background: radial-gradient(60% 50% at 50% 0%, #1B3350 0%, #0A1626 60%, #050C17 100%); }
-.bc-feed__stands { position: absolute; left: 0; right: 0; top: 14%; height: 28%; opacity: 0.9;
+.bc-feed__stands { position: absolute; left: 0; right: 0; top: 4%; height: 23%; opacity: 0.9;
   background: linear-gradient(180deg, transparent 0%, rgba(16, 32, 52, 0.5) 45%, rgba(9, 20, 34, 0.95) 100%),
     radial-gradient(circle at 2px 2px, rgba(244, 247, 251, 0.07) 1.2px, transparent 1.8px) 0 0 / 11px 9px; }
-.bc-feed__cam { position: absolute; left: 50%; bottom: -230px; width: 2400px; transform-origin: 50% 100%;
-  transform: translateX(calc(-50% + var(--pan, 0px))) perspective(1000px) rotateX(24deg);
-  transition: transform 1600ms var(--pulse-ease-standard, ease); filter: blur(1.6px) saturate(1.1) brightness(1.15); }
-.bc-feed__cam img { display: block; width: 100%; max-width: none; }
-.bc-feed__ball { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: #F4F7FB;
-  box-shadow: 0 0 22px 8px rgba(244, 247, 251, 0.45); transition: left 700ms ease, top 700ms ease; }
+.bc-feed__cam { position: absolute; left: 50%; bottom: -60px; width: 2400px; transform-origin: 50% 100%;
+  transform: translateX(calc(-50% + var(--pan, 0px))) perspective(1000px) rotateX(24deg); }
+.bc-feed__cam img { display: block; width: 100%; max-width: none; filter: blur(1.2px) saturate(1.1) brightness(1.15); }
+/* telestrator layer, projected in feed.tsx with the same camera as .bc-feed__cam (keep both in sync) */
+.bc-feed__marks { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
 .bc-feed__lights { position: absolute; inset: 0; background:
   radial-gradient(12% 10% at 12% 8%, rgba(220, 240, 255, 0.35), transparent 70%),
   radial-gradient(12% 10% at 88% 8%, rgba(220, 240, 255, 0.35), transparent 70%),
@@ -299,6 +298,7 @@ img { max-width: 100%; }
 .bc-feed__vignette { position: absolute; inset: 0; background: radial-gradient(85% 75% at 50% 55%, transparent 55%, rgba(0, 0, 0, 0.65) 100%); }
 .bc-feed__tag { position: absolute; right: 24px; top: 18px; font: 600 14px/1 var(--pulse-font-mono); letter-spacing: 0.14em; color: rgba(244, 247, 251, 0.38); white-space: pre; }
 .bc-moment-icon { width: 24px; height: 24px; filter: invert(96%); }
+.bc-frame .pb-pulse { top: 0; bottom: auto; }
 .bc-frame .pb-var__quote s { display: block; font-size: 0.72em; margin-bottom: 8px; }
 
 .bc-desk { display: grid; grid-template-columns: 1.35fr 1fr 1fr; gap: 22px; align-items: start; }
@@ -321,3 +321,12 @@ img { max-width: 100%; }
 @media (max-width: 1279px) { .bc-desk { grid-template-columns: repeat(2, minmax(0, 1fr)); } .bc-desk > :first-child { grid-column: 1 / -1; } }
 @media (max-width: 767px) { .bc-desk { grid-template-columns: minmax(0, 1fr); } .bc-stage-wrap { width: calc(100vw - 32px); } }
 .bc-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; }
+
+/* Play-by-play caption under the score bug */
+.bc-poss { position: absolute; left: 0; top: 80px; display: flex; align-items: center; gap: 16px; padding: 14px 26px 14px 22px; min-width: 520px;
+  border-left: 6px solid var(--_team, var(--pulse-accent)); clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%); }
+.bc-poss img { width: 38px; height: 44px; object-fit: contain; }
+.bc-poss__head { display: flex; align-items: center; gap: 12px; font: 700 20px/1 var(--pulse-font-ui); letter-spacing: 0.16em; text-transform: uppercase; color: var(--_team, var(--pulse-accent)); }
+.bc-poss__head em { font: 600 16px/1 var(--pulse-font-mono); letter-spacing: 0.12em; color: var(--pulse-text-muted); font-style: normal; }
+.bc-poss__dir { width: 40px; height: 14px; color: var(--_team, var(--pulse-accent)); }
+.bc-poss__act { margin-top: 8px; font: 500 26px/1.2 var(--pulse-font-ui); color: var(--pulse-text); white-space: nowrap; }
