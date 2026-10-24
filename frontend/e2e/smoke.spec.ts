@@ -52,6 +52,26 @@ test.describe('PULSE AI', () => {
     await expect(page.locator('.verdict-hero img[alt="unsupported stamp"]')).toBeVisible({ timeout: 10000 });
   });
 
+  test('Broadcast airs kit overlays from the replay and fact-checks a claim on air', async ({ page }) => {
+    const errors: string[] = [];
+    page.on('pageerror', e => errors.push(e.message));
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Broadcast', exact: true }).click();
+    await expect(page.locator('.pb-scorebug')).toBeVisible();
+    await expect(page.locator('.pb-pulse')).toBeVisible();
+    // the auto director airs the goal graphic when the clock passes the goal
+    await page.locator('input[type="range"]').fill('1080');
+    await page.locator('input[type="range"]').fill('1092');
+    await expect(page.locator('.pb-goal')).toBeVisible();
+    await expect(page.locator('.pb-goal__scorer')).not.toBeEmpty();
+    // manual cue: Narrative VAR banner with a verdict
+    await page.getByRole('button', { name: /^Check on air/ }).click();
+    await expect(page.locator('.pb-var__status:not([data-status="checking"])')).toBeVisible({ timeout: 10000 });
+    await page.keyboard.press('c');
+    await expect(page.locator('.pb-var')).toHaveCount(0);
+    expect(errors, errors.join('\n')).toEqual([]);
+  });
+
   test('AI Studio runs a bounded debate with three pundits and a verdict', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('button', { name: 'AI Studio' }).click();

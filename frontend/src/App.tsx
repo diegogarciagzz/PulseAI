@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Activity, FileText, Radio, ShieldCheck, Users } from 'lucide-react';
+import { Activity, FileText, MonitorPlay, Radio, ShieldCheck, Users } from 'lucide-react';
 import { PulseLogo } from './pulse';
 import { ErrorState, Loading, ModeBadge } from './components/common';
 import { MatchProvider, useMatch, type View } from './state/MatchContext';
@@ -8,9 +8,11 @@ import { MatchPulse } from './features/match-pulse/MatchPulse';
 import { NarrativeVar } from './features/narrative-var/NarrativeVar';
 import { Studio } from './features/ai-studio/Studio';
 import { Recap } from './features/match-recap/Recap';
+import { Broadcast } from './features/broadcast/Broadcast';
 
 const TABS: { key: View; label: string; icon: React.ReactNode }[] = [
   { key: 'live', label: 'Live Match', icon: <Radio /> },
+  { key: 'broadcast', label: 'Broadcast', icon: <MonitorPlay /> },
   { key: 'pulse', label: 'Match Pulse', icon: <Activity /> },
   { key: 'var', label: 'Narrative VAR', icon: <ShieldCheck /> },
   { key: 'studio', label: 'AI Studio', icon: <Users /> },
@@ -34,6 +36,7 @@ function Shell() {
         {!loading && !error && match && (
           <>
             {view === 'live' && <LiveMatch />}
+            {view === 'broadcast' && <Broadcast />}
             {view === 'pulse' && <MatchPulse />}
             {view === 'var' && <NarrativeVar />}
             {view === 'studio' && <Studio />}

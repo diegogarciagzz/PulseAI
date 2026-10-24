@@ -24,6 +24,14 @@ def _ordinal(n: int) -> str:
     return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
 
 
+_KIND_ES = {"momentum-swing": "cambio de dinámica", "pressure-surge": "fase de presión", "substitution-impact": "impacto de un cambio"}
+
+
+def _shifts_es(match: Match) -> str:
+    shifts = sorted([i for i in match.insights if i.kind.value in _KIND_ES], key=lambda i: -i.importance)[:2]
+    return "; ".join(f"{_KIND_ES[i.kind.value]} de {TEAMS[i.team].name} en el minuto {i.minute}" for i in sorted(shifts, key=lambda i: i.t)) or "sin cambios destacados"
+
+
 def _demo_summary(match: Match, mode: str, lang: str) -> str:
     f = _facts(match)
     hs, as_ = f["home_stats"], f["away_stats"]
@@ -31,13 +39,14 @@ def _demo_summary(match: Match, mode: str, lang: str) -> str:
     winner = f["home"] if h > a else f["away"] if a > h else None
     goals_txt = ", ".join(f"{g.player_name} for {TEAMS[g.team].short} in the {_ordinal(g.minute)} minute" for g in match.events if g.type == EventType.GOAL)
     if lang == "es":
+        goals_es = ", ".join(f"{g.player_name} ({TEAMS[g.team].short}, minuto {g.minute})" for g in match.events if g.type == EventType.GOAL) or "ninguno"
         if mode == "fan":
             lead = f"{winner} se lleva el partido {h}-{a}." if winner else f"Empate {h}-{a}."
-            return (f"{lead} Goles: {goals_txt}. {f['home']} tuvo el {hs['possession_pct']:.0f}% de la posesión y {hs['shots']} remates; "
+            return (f"{lead} Goles: {goals_es}. {f['home']} tuvo el {hs['possession_pct']:.0f}% de la posesión y {hs['shots']} remates; "
                     f"{f['away']} respondió con {as_['shots']} remates y {as_['recoveries']} recuperaciones. Datos sintéticos de clubes ficticios.")
         return (f"Resultado final {h}-{a}. Posesión {hs['possession_pct']:.0f}% a {as_['possession_pct']:.0f}%, remates {hs['shots']} a {as_['shots']}, "
                 f"xG {hs['xg']:.2f} a {as_['xg']:.2f}, entradas al último tercio {hs['final_third_entries']} a {as_['final_third_entries']}. "
-                f"Momentos clave: {' '.join(f['shifts'][:2])}")
+                f"Momentos clave: {_shifts_es(match)}.")
     if mode == "fan":
         lead = f"{winner} take it {h}-{a}!" if winner else f"Honours even at {h}-{a}."
         return (f"{lead} The goals came from {goals_txt}. {f['home']} had {hs['possession_pct']:.0f}% possession and {hs['shots']} shots, "

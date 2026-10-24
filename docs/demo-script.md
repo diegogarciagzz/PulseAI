@@ -1,18 +1,30 @@
-# Demo script (target 110 to 115 seconds)
+# Demo video script (target 1:50, hard limit 2:00)
 
-Setup before recording: backend and frontend running, browser at 1440 x 900 on http://127.0.0.1:5173, scenario **The Comeback**, replay reset (press the reset button).
+Record the live demo so the header shows **Foundry live**:
+https://pulse-ai.whitestone-5de70be6.eastus.azurecontainerapps.io
 
-| Time | Screen | Action | Say |
-| --- | --- | --- | --- |
-| 0:00 to 0:20 | Live Match | Press **Start replay**, select **120x**. Let the clock run past 18' (SUF goal) and 41' (0-2). | "PULSE AI turns a synthetic match into a living signal. North City versus South United, both fictional. Score, clock, statistics and the pitch map all come from one event log. Every statistic you see is computed server-side from those events." |
-| 0:20 to 0:45 | Live Match, then Match Pulse | Pause at ~56'. Click the **50' Momentum swings to North City** chip, then click the momentum-shift marker on the chart. | "Match Pulse is a documented momentum index, not a scoring probability. At 50 minutes it flips. Click the marker: here is what happened, why the system flagged it, the exact events that contributed, and the statistics for the window." Press **Explain** to show the AI explanation, which carries a Narrative VAR status. |
-| 0:45 to 1:10 | Narrative VAR | Click the predefined claim **"North City FC has dominated the last ten minutes with 85% possession"** (replay clock at ~67'). | "Narrative VAR checks commentary against evidence. The claim says 85 percent. The event data says 57 in that window. Status: CORRECTED, with the before and after, the revised sentence, two possession readings, and the twelve events used." Then click **Fabricated goal**: "A goal that never happened is UNSUPPORTED. Opinions are UNVERIFIED, not false." |
-| 1:10 to 1:40 | AI Studio | Press **Full-time** in replay controls (or just open the tab), press **Start debate**. | "At full time three original pundits debate Player of the Match: the Analyst argues from volume, the Fan from decisive moments, the Tactician from structure. Two bounded rounds, every argument fact-checked. The moderator gives an evidence-based verdict: the panel is split two to one, and the disagreement is shown, not hidden." |
-| 1:40 to 1:55 | Match Recap | Toggle **Fan mode** to **Analyst mode**, point at the verified sections and the mode badge. | "The recap serves fans and analysts from the same verified facts. In Foundry mode the explanations, debate and recap come from Microsoft Foundry models through Agent Framework agents; in demo mode they are deterministic, and the badge always tells you which. Understand what is happening, why it matters, and whether you can trust the explanation. PULSE AI, beyond the scoreline." |
+## Before you record
 
-Reliability notes
+1. Open the live demo in Chrome, zoom 100%, window about 1440 x 900. Scenario **The Comeback**.
+2. Warm the AI roundtable once: **AI Studio**, press **Start debate**, wait until the verdict appears (about 30 s). It is cached, so later it airs instantly.
+3. Go to **Broadcast**, press the reset button in the replay controls, set speed **60x**, mode **AUTO**.
+4. Rehearse at most two full takes per hour. The public demo allows 30 AI calls per address per hour; past that the AI graphics fall back to deterministic text (still correct, labelled demo).
+5. Mac: Cmd+Shift+5, "Record Selected Portion" around the browser window, microphone on in Options. Upload to YouTube as **Public** (or Unlisted only if the rules allow it).
 
-- Use the **Jump to** chips instead of waiting: every goal and shift has one.
-- The VAR example works at any replay time; the demo number (57%) corresponds to the clock at 67:00 (`jump to 71' goal`, then drag back slightly, or untick "check against the replay clock" to use full time, which gives 64%).
-- The debate is cached per match; **Run again** forces a fresh run (useful in Foundry mode).
-- If the backend is down the UI shows a clear error with the start command and a Retry button.
+## Script
+
+| Time | Screen and action | Voice-over |
+| --- | --- | --- |
+| 0:00 to 0:12 | Broadcast tab, clean feed, header badge visible. | "Match data is everywhere, but it rarely explains what is driving a game, and AI commentary can sound sure while getting the numbers wrong. This is PULSE AI." |
+| 0:12 to 0:35 | Press **Start replay**. Let the auto director air the 18' goal, the scorer card, then the next graphics. | "A synthetic match streams in event by event. Code computes every statistic and our Match Pulse momentum index. The auto director puts graphics on air by itself: the goal, the scorer's card, the momentum chart, all from the same events." |
+| 0:35 to 0:55 | Around 50', press **Space** to pause, then **I** (AI insight). Wait for the lower-third to show the text and its Narrative VAR status. | "Here North City take over. Microsoft Foundry writes the insight from an evidence pack of real numbers, and Narrative VAR checks every figure before it reaches air." |
+| 0:55 to 1:15 | In the Narrative VAR desk, keep the example claim about 85% possession and press **Check on air**. The banner shows CHECKING, then CORRECTED with the real figure. | "Commentators make mistakes too. A presenter says North City had 85 percent of the ball. Narrative VAR checks it against the data and corrects it on screen, with the evidence." |
+| 1:15 to 1:40 | Press **Full-time** in the replay controls: the full-time card airs. Press **O** (Player of the Match), then **N** twice (pundits). | "At full time, three AI pundits built with Microsoft Agent Framework debate the Player of the Match in two bounded rounds. Every argument is fact-checked, and the verdict and the vote go straight to air." |
+| 1:40 to 1:55 | **Match Recap** tab: switch **Analyst**, then **ES**. | "The same verified facts become recaps for fans or analysts, in English or Spanish. It runs on Azure Container Apps with a managed identity and Microsoft Foundry. PULSE AI: beyond the scoreline." |
+
+## If something goes wrong
+
+- A graphic does not appear: press **C** to clear, then the key again. Every graphic has a button on the director desk.
+- The AI insight says "Demo mode": the hourly limit was reached. Wait, or record the remaining shots and add the insight shot later.
+- Player of the Match takes long: the roundtable was not warmed. Wait for it, or cut the pause in editing.
+- Keyboard shortcuts: Space play or pause, G goal, S player stats, M momentum, I AI insight, V Narrative VAR, N pundit, O Player of the Match, H half-time, T full-time, C clear, F full screen.

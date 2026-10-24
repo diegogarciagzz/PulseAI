@@ -98,7 +98,43 @@ class FoundryProvider(BaseProvider):
         return obj, "foundry"
 
 
+_SPACES = re.compile(r"[\u00a0\u1680\u2000-\u200b\u202f\u205f\u2060\u3000\ufeff]")
+_INVISIBLE = re.compile(r"[\u00ad\u200c\u200d]")
+_DASHES = str.maketrans({"\u2010": "-", "\u2011": "-", "\u2012": "-", "\u2013": "-", "\u2212": "-"})
+
+
+def clean_text(text: str) -> str:
+    """Normalise model prose for on-screen use.
+
+    Models sometimes separate words with narrow or zero-width spaces, which render as glued words
+    ("theNCF") in terminals, logs and some fonts. They become plain spaces here; non-breaking
+    hyphens become ASCII hyphens and em dashes become commas (house style).
+    """
+    text = _SPACES.sub(" ", text)
+    text = _INVISIBLE.sub("", text).translate(_DASHES)
+    text = re.sub(r"\s*\u2014\s*", ", ", text)
+    text = re.sub(r"[ \t]{2,}", " ", text)
+    text = re.sub(r" +([,.;:!?])", r"\1", text)
+    return text.strip()
+
+
+def _clean(value: Any) -> Any:
+    if isinstance(value, str):
+        return clean_text(value)
+    if isinstance(value, list):
+        return [_clean(v) for v in value]
+    if isinstance(value, dict):
+        return {k: _clean(v) for k, v in value.items()}
+    return value
+
+
 def _parse_json(text: str) -> dict[str, Any] | None:
+    """Parse a JSON object from model output (bare, fenced or embedded) and clean its strings."""
+    obj = _parse_json_raw(text)
+    return _clean(obj) if obj is not None else None
+
+
+def _parse_json_raw(text: str) -> dict[str, Any] | None:
     text = text.strip()
     if text.startswith("```"):
         text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)

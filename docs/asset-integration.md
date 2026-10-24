@@ -8,7 +8,7 @@ Source: `../pulse-ai-brand-kit` (313 files per its manifest). The original kit i
 | --- | --- | --- |
 | `src/theme/*` (design-tokens.json, pulse-theme.css, tokens.ts, tailwind.pulse.cjs) | `frontend/src/pulse/theme/` | global theme, Tailwind preset |
 | `src/components/*.tsx` (PulseLogo, icons, Pitch, MatchPulseChart, NarrativeVar, MatchChrome) | `frontend/src/pulse/components/` | every view |
-| `src/broadcast/Overlays.tsx`, `pulse-broadcast.css` | `frontend/src/pulse/broadcast/` | available for broadcast previews (CSS loaded globally) |
+| `src/broadcast/Overlays.tsx`, `pulse-broadcast.css` | `frontend/src/pulse/broadcast/` | used by the Broadcast tab: eleven of the kit's twelve overlays, driven by live match data (CSS loaded globally) |
 | `src/index.ts` | `frontend/src/pulse/index.ts` | single import point |
 | `public/assets/brand/` (logos, favicon, manifest) | `frontend/public/assets/brand/` | header logo, favicon, PWA manifest |
 | `public/assets/teams/` (both clubs: badges, small, mono, avatars, jerseys, palettes) | `frontend/public/assets/teams/` | scoreboard, verdict jersey, stat colours |
@@ -32,7 +32,8 @@ Result: 257 asset files, 7.1 MB in `frontend/public/assets`.
 ## Adaptations (the only edits to kit code)
 
 1. `src/pulse/components/MatchPulseChart.tsx`: added optional props `onEventClick`, `selectedId`, an optional `id` on `PulseEvent`, a lime selection ring and a slightly larger goal marker (32 px). Visual rules of the kit are otherwise unchanged. Reason: the spec requires clicking a momentum peak to open its evidence; the kit component only supported hover.
-2. `tsconfig` compatibility: the kit components compile unchanged under Vite's strict TypeScript 6 configuration (`verbatimModuleSyntax`, `erasableSyntaxOnly`). No changes were needed.
+2. `src/pulse/broadcast/Overlays.tsx`: `MomentumToast` takes an optional `deltaLabel` (default `LAST 10 MIN`, the kit's original text) so the toast can label what its number measures (pulse shift, shots in a pressure spell).
+3. `tsconfig` compatibility: the kit components compile unchanged under Vite's strict TypeScript 6 configuration (`verbatimModuleSyntax`, `erasableSyntaxOnly`). No changes were needed.
 
 ## Design system usage
 

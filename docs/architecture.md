@@ -10,7 +10,7 @@ React (Vite, TS strict)                      FastAPI (Python 3.11+)
 │ features/                    │             │ simulator/  engine, scenarios, rosters │
 │  live-match  match-pulse     │             │ analytics/  stats, pulse, insights     │
 │  narrative-var  ai-studio    │             │ verification/ claims, verifier         │
-│  match-recap                 │             │ ai/ provider (demo | foundry)          │
+│  match-recap  broadcast      │             │ ai/ provider (demo | foundry)          │
 │ pulse/ (brand kit copy)      │             │ agents/ pundits, recap                 │
 └──────────────────────────────┘             │ evaluation/ dataset, run_eval, ground. │
                                              └────────────────────────────────────────┘
@@ -82,8 +82,16 @@ Deterministic: candidate statistics, three lens scores (analyst, fan, tactician)
 
 Fan and Analyst summaries from the same facts (English, Spanish optional), key events, top shifts with re-verified explanations, candidate table and the same Player of the Match rule as the Studio. Model summaries that fail verification are replaced by the evidence-based rewrite and re-checked.
 
+## Broadcast (`frontend/src/features/broadcast/`)
+
+The Render stage. The kit's overlay components sit on a 1920 x 1080 stage (`BroadcastStage`, scaled to the container or to full screen) over a stand-in feed: the kit pitch under a perspective "camera" that pans towards the ball position of the latest event, labelled STAND-IN FEED / SYNTHETIC MATCH DATA.
+
+- `director.ts` is a pure cue queue (unit-tested). `autoCues(prev, t, events, insights)` turns what the replay clock just revealed into cue groups: a goal plus the scorer's player card, moments with importance >= 0.9 (momentum swings, pressure spells and substitution impact as a momentum toast, the rest as an insight lower-third), the half-time card and a persistent full-time card. A long jump counts as a seek and only picks up the last 15 seconds, so scrubbing never floods the screen. `directorReducer` lets goals and title cards jump the queue and replace routine graphics, drops auto cues that are more than eight match minutes old, and drops queued scorer cards once a newer goal arrives.
+- `cues.tsx` renders each cue from live data only: goal band (scorer, assist, passes in the move, xG), player card (`/players?until_t=` so nothing after the cue time leaks; bars relative to the match leader), momentum toast with a sparkline of the real Match Pulse, AI insight (`/insights/{id}/explain`: Microsoft Foundry text plus its Narrative VAR status), Narrative VAR banner (`/verify` at the current clock, showing CHECKING, then the verdict and the correction), pundit nameplates and Player of the Match from the roundtable, half-time card with first-half statistics, full-time card with every goal. Requests are shared per key, so re-airing a graphic does not call the model again.
+- Manual control: a director desk with one button and one keyboard shortcut per graphic, Auto/Manual mode, a VAR desk for typed claims, a rundown of what aired, and full screen (F). Pundit and Player of the Match graphics unlock at full-time because the roundtable uses full-match statistics.
+
 ## Frontend notes
 
-- `src/pulse/` is the brand kit's `src/` (theme, components, broadcast) copied verbatim except for one extension (see `asset-integration.md`).
+- `src/pulse/` is the brand kit's `src/` (theme, components, broadcast) copied verbatim except for two small prop extensions (see `asset-integration.md`).
 - Tailwind v3 is configured with the kit preset; most styling uses the kit's CSS variables and classes directly (`src/styles/app.css`).
 - Accessibility: status is always icon plus label, chart markers are focusable buttons, controls have labels, reduced motion is respected by the kit CSS.

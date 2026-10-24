@@ -10,14 +10,14 @@ Resume instructions: read this file, then `README.md` and `docs/architecture.md`
 - [x] Phase 3: AI provider abstraction (demo / Foundry via azure-ai-projects 2.x Responses API), capabilities endpoint, mode badge, grounded insight explanations verified by VAR, evaluation dataset (69 cases) and runner, optional azure-ai-evaluation groundedness hook
 - [x] Phase 4: pundit roundtable (3 personas, lens scores, bounded 2-round debate, Agent Framework agents in Foundry mode, VAR-checked arguments, moderator verdict), studio UI with kit portraits
 - [x] Phase 5: recap (fan/analyst, en/es), docs, README, demo script, .env.example, tests (backend 54, eval 69/69, vitest 5, Playwright 5, tsc, vite build)
+- [x] Phase 6 (Oct 24): Broadcast tab (kit overlays on a 1080p stage, auto director, director desk, VAR desk, rundown, full screen), model text normalisation (unicode spaces, team ids in evidence packs), Spanish demo recap fix, responsive grid fixes. Tests: backend 60, vitest 11, Playwright 6.
 
 ## Not done / honest gaps
 - [x] Live Foundry verified (Oct 24): project `pulseai-diego`, deployment `gpt-5-mini`. Fixes: Responses API call now uses `instructions` + text `input` (role-only items were rejected with 400), reasoning effort low for gpt-5 models, FoundryChatClient receives the provider credential directly. Smoke test: `python scripts/foundry_smoke.py` -> LIVE FOUNDRY OK.
-- Broadcast overlay components from the kit are available (`src/pulse/broadcast`) but not surfaced in the UI.
 - Optional audio synthesis for the debate: not started.
-- Repository is not yet a git repo and not public (user action: `git init`, review, publish).
+- [x] Public repository: https://github.com/diegogarciagzz/PulseAI
 
 ## Next priorities
 1. [x] Deployed (Oct 24): https://pulse-ai.whitestone-5de70be6.eastus.azurecontainerapps.io (Container Apps, managed identity -> Foundry, credential_source=managed identity). Redeploy after a new image: `bash deploy/azure-containerapps.sh`. Keep it running until Nov 10.
 2. Record the demo video following `docs/demo-script.md`.
-3. Optional: broadcast overlay preview tab using `BroadcastStage` + `GoalAnnouncement` + `VarBanner`.
+3. Submit with the text in `docs/submission.md` (deadline Oct 27, 11:59 pm PT).

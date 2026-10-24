@@ -14,6 +14,8 @@ Rules:
 - Quote at least two numbers from the pack exactly as given.
 - Name the time window exactly as given.
 - Do not mention probabilities or that the model is an AI.
+- Refer to teams by the names or short codes in the pack (for example North City or NCF), never by ids.
+- Plain text: regular spaces, standard punctuation, no em dashes.
 Return JSON: {"explanation": "<paragraph>"}"""
 
 
@@ -25,7 +27,7 @@ def evidence_pack(match: Match, insight: MomentumInsight) -> str:
              "Statistics (authoritative):"]
     lines += [f"  - {k}: {v}" for k, v in insight.stats.items()]
     lines.append("Events (authoritative, ids are real):")
-    lines += [f"  - {e.event_id} {e.minute}' {e.type} {e.team or ''} {e.player_name or ''}: {e.description}" for e in insight.evidence]
+    lines += [f"  - {e.event_id} {e.minute}' {e.type} {TEAMS[e.team].short if e.team else ''} {e.player_name or ''}: {e.description}" for e in insight.evidence]
     return "\n".join(lines)
 
 

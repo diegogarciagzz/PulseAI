@@ -3,7 +3,7 @@ import { api } from '../services/api';
 import { useReplay } from '../hooks/useReplay';
 import type { Capabilities, MatchDetail, MatchEvent, MatchState, MomentumInsight, PulsePoint, ScenarioInfo } from '../types/api';
 
-export type View = 'live' | 'pulse' | 'var' | 'studio' | 'recap';
+export type View = 'live' | 'broadcast' | 'pulse' | 'var' | 'studio' | 'recap';
 
 interface Ctx {
   view: View;

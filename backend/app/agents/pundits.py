@@ -197,13 +197,14 @@ async def _foundry_round(prov: FoundryProvider, cands: list[CandidateScore], tab
     async def run_one(pid: str) -> tuple[str, dict[str, Any]]:
         persona = PERSONAS[pid]
         agent = Agent(client=client, name=persona["name"].replace(" ", ""), instructions=persona["instructions"] + (
-            f"\nRespond ONLY with JSON: {{\"pick_player_id\": one of [{ids}], \"argument\": \"<max 70 words>\"}}."))
+            f"\nRespond ONLY with JSON: {{\"pick_player_id\": one of [{ids}], \"argument\": \"<max 70 words>\"}}."
+            "\nWrite plain text with regular spaces and standard punctuation, no em dashes."))
         prompt = f"Evidence pack:\n{table}\n\n" + (f"Round: opening argument. Who is your Player of the Match and why?" if round_name == "opening" else
                                                   f"Round: rebuttal. The other pundits argued:\n{context.get(pid, '')}\nRespond in one short paragraph, keep or change your pick.")
         res = await asyncio.wait_for(agent.run(prompt), timeout=settings.ai_timeout_seconds)
         text = getattr(res, "text", None) or str(res)
-        from app.ai.provider import _parse_json
-        obj = _parse_json(text) or {"argument": text}
+        from app.ai.provider import _parse_json, clean_text
+        obj = _parse_json(text) or {"argument": clean_text(text)}
         return pid, obj
 
     results = await asyncio.gather(*(run_one(p) for p in PERSONAS))

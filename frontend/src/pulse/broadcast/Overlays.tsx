@@ -62,15 +62,15 @@ export function GoalAnnouncement({ team, scorer, minute, assist, note, score, te
   );
 }
 
-export function MomentumToast({ team, window, delta, metric = 'Pressure index', children }:
-  { team: TeamId; window: string; delta: string; metric?: string; children?: React.ReactNode }) {
+export function MomentumToast({ team, window, delta, metric = 'Pressure index', deltaLabel = 'LAST 10 MIN', children }:
+  { team: TeamId; window: string; delta: string; metric?: string; deltaLabel?: string; children?: React.ReactNode }) {
   const t = TEAMS[team];
   return (
     <Safe><div className="pb-momentum pb-plate pb-enter-rise" style={{ ['--_team' as any]: t.color }} role="status">
       <div className="pb-momentum__head"><span className="pb-overline">Momentum shift</span><span className="pb-momentum__time">{window}</span></div>
       <div className="pb-momentum__body"><img src={t.badgeSmall} alt="" />
         <div><div className="pb-momentum__team">{t.name.replace(' FC', '')}</div><div className="pb-player__role" style={{ marginTop: 8 }}>{metric}</div></div>
-        <div className="pb-momentum__delta pb-num">{delta}<small>LAST 10 MIN</small></div></div>
+        <div className="pb-momentum__delta pb-num">{delta}<small>{deltaLabel}</small></div></div>
       {children /* pass a mini <svg className="pb-momentum__wave"> sparkline */}
       <div className="pb-momentum__bar" />
     </div></Safe>
